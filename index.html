@@ -1,0 +1,161 @@
+<html>
+
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>Google Maps - pygmaps </title>
+
+	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#map {
+			height: 400px;
+			width: 100%;
+		}
+
+		#legend {
+			font-family: Arial, sans-serif;
+			background: #fff;
+			padding: 10px;
+			margin: 10px;
+			border: 2px solid #000;
+		}
+
+		#legend h3 {
+			margin-top: 0;
+		}
+
+		#legend img {
+			vertical-align: middle;
+		}
+	</style>
+
+
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false&key=AIzaSyBlY8vCsTMk4odB1KVd7fF3PEY6diQoRng"></script>
+	<script type="text/javascript">
+		function initialize() {
+			var centerlatlng = new google.maps.LatLng(41.628467, -71.006109);
+			var myOptions = {
+				zoom: 16,
+				center: centerlatlng,
+				mapTypeId: google.maps.MapTypeId.SATELLITE
+				
+			};
+			var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+			
+			var map_points = [
+				new google.maps.LatLng(41.628622, -71.005829),
+				new google.maps.LatLng(41.628498, -71.005835),
+				new google.maps.LatLng(41.632667, -71.007199),
+				new google.maps.LatLng(41.632607, -71.008323),
+				new google.maps.LatLng(41.632706, -71.008443),
+				new google.maps.LatLng(41.632655, -71.005451),
+				new google.maps.LatLng(41.633090, -71.007642),
+				new google.maps.LatLng(41.632835, -71.008247),
+				new google.maps.LatLng(41.632039, -71.008748),
+				new google.maps.LatLng(41.632472, -71.008743),
+				new google.maps.LatLng(41.632677, -71.005260),
+				new google.maps.LatLng(41.632422, -71.008376),
+				new google.maps.LatLng(41.632592, -71.005281),
+				new google.maps.LatLng(41.632468, -71.008340),
+				new google.maps.LatLng(41.632642, -71.005333),
+				new google.maps.LatLng(41.632619, -71.008237),
+				new google.maps.LatLng(41.631931, -71.008940),
+				new google.maps.LatLng(41.632569, -71.008268),
+				new google.maps.LatLng(41.631939, -71.007508),
+				new google.maps.LatLng(41.632557, -71.005426),
+				new google.maps.LatLng(41.632515, -71.006810),
+				new google.maps.LatLng(41.629394, -71.005999),
+				new google.maps.LatLng(41.632383, -71.008614),
+				new google.maps.LatLng(41.629598, -71.006170),
+				new google.maps.LatLng(41.632742, -71.005296),
+				new google.maps.LatLng(41.632696, -71.008190),
+				new google.maps.LatLng(41.632696, -71.005307),
+			];
+
+			var legend = document.getElementById('legend');
+			map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+
+			var contentStrings = [
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-03-30T13:47:00.000</p>' + '<p>Goose Count:6</p>' + '<p>Temperature:45F</p>' + '<p>Pressure:29.87inHg</p>' + '<p>Humidity:84%</p>' + '<p>WindSpeed:10mph</p>' + '<p>WindDirection:NNEmph</p>' + '<p>Precipitation:0.4in</p>' + '<p>DewPoint:41.0F</p>' + '<p>WeatherObservation:CLEAR</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-03-30T13:56:00.000</p>' + '<p>Goose Count:6</p>' + '<p>Temperature:45F</p>' + '<p>Pressure:29.87inHg</p>' + '<p>Humidity:84%</p>' + '<p>WindSpeed:10mph</p>' + '<p>WindDirection:NNEmph</p>' + '<p>Precipitation:0.4in</p>' + '<p>DewPoint:41.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-03-30T14:18:00.000</p>' + '<p>Goose Count:29</p>' + '<p>Temperature:45F</p>' + '<p>Pressure:29.88inHg</p>' + '<p>Humidity:83%</p>' + '<p>WindSpeed:11mph</p>' + '<p>WindDirection:NNEmph</p>' + '<p>Precipitation:0.4in</p>' + '<p>DewPoint:41.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-03-31T14:58:00.000</p>' + '<p>Goose Count:40</p>' + '<p>Temperature:43F</p>' + '<p>Pressure:30.03inHg</p>' + '<p>Humidity:52%</p>' + '<p>WindSpeed:9mph</p>' + '<p>WindDirection:NEmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:26.0F</p>' + '<p>WeatherObservation:PARTLY CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-01T13:49:00.000</p>' + '<p>Goose Count:27</p>' + '<p>Temperature:41F</p>' + '<p>Pressure:29.77inHg</p>' + '<p>Humidity:66%</p>' + '<p>WindSpeed:14mph</p>' + '<p>WindDirection:Nmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:29.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-02T13:14:00.000</p>' + '<p>Goose Count:2</p>' + '<p>Temperature:52F</p>' + '<p>Pressure:29.5inHg</p>' + '<p>Humidity:57%</p>' + '<p>WindSpeed:15mph</p>' + '<p>WindDirection:NNWmph</p>' + '<p>Precipitation:0.2in</p>' + '<p>DewPoint:37.9F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-03T13:25:00.000</p>' + '<p>Goose Count:17</p>' + '<p>Temperature:45F</p>' + '<p>Pressure:29.54inHg</p>' + '<p>Humidity:94%</p>' + '<p>WindSpeed:21mph</p>' + '<p>WindDirection:Nmph</p>' + '<p>Precipitation:0.9in</p>' + '<p>DewPoint:40.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-04T14:41:00.000</p>' + '<p>Goose Count:15</p>' + '<p>Temperature:46F</p>' + '<p>Pressure:30.01inHg</p>' + '<p>Humidity:69%</p>' + '<p>WindSpeed:13mph</p>' + '<p>WindDirection:Nmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:37.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-05T15:42:00.000</p>' + '<p>Goose Count:11</p>' + '<p>Temperature:51F</p>' + '<p>Pressure:30.03inHg</p>' + '<p>Humidity:57%</p>' + '<p>WindSpeed:11mph</p>' + '<p>WindDirection:Smph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:36.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-06T08:11:00.000</p>' + '<p>Goose Count:9</p>' + '<p>Temperature:46F</p>' + '<p>Pressure:30.01inHg</p>' + '<p>Humidity:78%</p>' + '<p>WindSpeed:7mph</p>' + '<p>WindDirection:Nmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:40.0F</p>' + '<p>WeatherObservation:PARTLY CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-06T14:45:00.000</p>' + '<p>Goose Count:4</p>' + '<p>Temperature:59F</p>' + '<p>Pressure:29.97inHg</p>' + '<p>Humidity:28%</p>' + '<p>WindSpeed:4mph</p>' + '<p>WindDirection:NWmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:32.0F</p>' + '<p>WeatherObservation:CLEAR</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-07T08:00:00.000</p>' + '<p>Goose Count:3</p>' + '<p>Temperature:48F</p>' + '<p>Pressure:29.91inHg</p>' + '<p>Humidity:46%</p>' + '<p>WindSpeed:4mph</p>' + '<p>WindDirection:Wmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:24.0F</p>' + '<p>WeatherObservation:CLEAR</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-07T08:00:00.000</p>' + '<p>Goose Count:2</p>' + '<p>Temperature:48F</p>' + '<p>Pressure:29.91inHg</p>' + '<p>Humidity:46%</p>' + '<p>WindSpeed:4mph</p>' + '<p>WindDirection:Wmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:24.0F</p>' + '<p>WeatherObservation:CLEAR</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-08T08:07:00.000</p>' + '<p>Goose Count:7</p>' + '<p>Temperature:45F</p>' + '<p>Pressure:29.53inHg</p>' + '<p>Humidity:92%</p>' + '<p>WindSpeed:6mph</p>' + '<p>WindDirection:NNEmph</p>' + '<p>Precipitation:50.0in</p>' + '<p>DewPoint:42.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-08T08:07:00.000</p>' + '<p>Goose Count:2</p>' + '<p>Temperature:45F</p>' + '<p>Pressure:29.53inHg</p>' + '<p>Humidity:92%</p>' + '<p>WindSpeed:6mph</p>' + '<p>WindDirection:NNEmph</p>' + '<p>Precipitation:50.0in</p>' + '<p>DewPoint:42.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-08T14:00:00.000</p>' + '<p>Goose Count:14</p>' + '<p>Temperature:52F</p>' + '<p>Pressure:29.54inHg</p>' + '<p>Humidity:70%</p>' + '<p>WindSpeed:9mph</p>' + '<p>WindDirection:Nmph</p>' + '<p>Precipitation:0.1in</p>' + '<p>DewPoint:43.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-09T07:45:00.000</p>' + '<p>Goose Count:2</p>' + '<p>Temperature:44F</p>' + '<p>Pressure:29.56inHg</p>' + '<p>Humidity:91%</p>' + '<p>WindSpeed:3mph</p>' + '<p>WindDirection:SEmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:42.0F</p>' + '<p>WeatherObservation:MOSTLY CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-09T07:45:00.000</p>' + '<p>Goose Count:2</p>' + '<p>Temperature:44F</p>' + '<p>Pressure:29.56inHg</p>' + '<p>Humidity:91%</p>' + '<p>WindSpeed:3mph</p>' + '<p>WindDirection:SEmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:42.0F</p>' + '<p>WeatherObservation:MOSTLY CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-09T07:45:00.000</p>' + '<p>Goose Count:1</p>' + '<p>Temperature:44F</p>' + '<p>Pressure:29.56inHg</p>' + '<p>Humidity:91%</p>' + '<p>WindSpeed:3mph</p>' + '<p>WindDirection:SEmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:42.0F</p>' + '<p>WeatherObservation:MOSTLY CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-09T07:45:00.000</p>' + '<p>Goose Count:2</p>' + '<p>Temperature:44F</p>' + '<p>Pressure:29.56inHg</p>' + '<p>Humidity:91%</p>' + '<p>WindSpeed:3mph</p>' + '<p>WindDirection:SEmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:42.0F</p>' + '<p>WeatherObservation:MOSTLY CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-09T13:58:00.000</p>' + '<p>Goose Count:17</p>' + '<p>Temperature:46F</p>' + '<p>Pressure:29.18inHg</p>' + '<p>Humidity:95%</p>' + '<p>WindSpeed:18mph</p>' + '<p>WindDirection:SEmph</p>' + '<p>Precipitation:0.3in</p>' + '<p>DewPoint:45.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-09T14:26:00.000</p>' + '<p>Goose Count:1</p>' + '<p>Temperature:46F</p>' + '<p>Pressure:29.18inHg</p>' + '<p>Humidity:95%</p>' + '<p>WindSpeed:18mph</p>' + '<p>WindDirection:SEmph</p>' + '<p>Precipitation:0.3in</p>' + '<p>DewPoint:45.0F</p>' + '<p>WeatherObservation:CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-10T07:58:00.000</p>' + '<p>Goose Count:3</p>' + '<p>Temperature:42F</p>' + '<p>Pressure:29.22inHg</p>' + '<p>Humidity:57%</p>' + '<p>WindSpeed:15mph</p>' + '<p>WindDirection:Wmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:27.0F</p>' + '<p>WeatherObservation:CLEAR</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-11T08:20:00.000</p>' + '<p>Goose Count:0</p>' + '<p>Temperature:43F</p>' + '<p>Pressure:29.75inHg</p>' + '<p>Humidity:62%</p>' + '<p>WindSpeed:15mph</p>' + '<p>WindDirection:Wmph</p>' + '<p>Precipitation:0.1in</p>' + '<p>DewPoint:28.0F</p>' + '<p>WeatherObservation:CLEAR</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-11T17:09:00.000</p>' + '<p>Goose Count:2</p>' + '<p>Temperature:57F</p>' + '<p>Pressure:29.84inHg</p>' + '<p>Humidity:29%</p>' + '<p>WindSpeed:15mph</p>' + '<p>WindDirection:WNWmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:19.0F</p>' + '<p>WeatherObservation:PARTLY CLOUDY</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-12T08:25:00.000</p>' + '<p>Goose Count:3</p>' + '<p>Temperature:44F</p>' + '<p>Pressure:30.23inHg</p>' + '<p>Humidity:55%</p>' + '<p>WindSpeed:3mph</p>' + '<p>WindDirection:SSWmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:29.0F</p>' + '<p>WeatherObservation:CLEAR</p>' + '</div>' + '</div>',
+				'<divid="content">' + '<divid="siteNotice">' + '</div>' + '<h1id="firstHeading"class="firstHeading">Goose Observation</h1>' + '<divid="bodyContent">' + '<p>Date:2020-04-12T08:25:00.000</p>' + '<p>Goose Count:1</p>' + '<p>Temperature:44F</p>' + '<p>Pressure:30.23inHg</p>' + '<p>Humidity:55%</p>' + '<p>WindSpeed:3mph</p>' + '<p>WindDirection:SSWmph</p>' + '<p>Precipitation:0.0in</p>' + '<p>DewPoint:29.0F</p>' + '<p>WeatherObservation:CLEAR</p>' + '</div>' + '</div>'
+			];
+
+			var title_date = 
+			[
+			'2020-03-30T13:47:00.000','2020-03-30T13:56:00.000','2020-03-30T14:18:00.000','2020-03-31T14:58:00.000','2020-04-01T13:49:00.000','2020-04-02T13:14:00.000','2020-04-03T13:25:00.000','2020-04-04T14:41:00.000','2020-04-05T15:42:00.000','2020-04-06T08:11:00.000','2020-04-06T14:45:00.000','2020-04-07T08:00:00.000','2020-04-07T08:00:00.000','2020-04-08T08:07:00.000','2020-04-08T08:07:00.000','2020-04-08T14:00:00.000','2020-04-09T07:45:00.000','2020-04-09T07:45:00.000','2020-04-09T07:45:00.000','2020-04-09T07:45:00.000','2020-04-09T13:58:00.000','2020-04-09T14:26:00.000','2020-04-10T07:58:00.000','2020-04-11T08:20:00.000','2020-04-11T17:09:00.000','2020-04-12T08:25:00.000','2020-04-12T08:25:00.000'
+			];
+
+
+			var markers = [];
+			var i;
+			for (i = 0; i < map_points.length; i++) {
+				markers.push(
+					new google.maps.Marker({
+						position: map_points[i],
+						map: map,
+						title: title_date[i]
+					})
+				)
+
+				var infowindow = new google.maps.InfoWindow();
+
+				google.maps.event.addListener(markers[i], 'click', (function (marker, content, infowindow) {
+					return function () {
+						infowindow.setContent(content);
+						infowindow.open(map, marker);
+					};
+				})(markers[i], contentStrings[i], infowindow));
+			}
+
+			markers.setMap(map)
+		}
+
+	</script>
+</head>
+
+<body style="margin:0px; padding:0px;" onload="initialize()">
+	<div id="map_canvas" style="width: 100%; height: 100%;"> </div>
+	<div id="legend">
+		<h3>Locations of Observed Geese  </h3>
+		<p>Observations made March 20th through April 12th </p>
+		<p> <i>NOTE:Locations approximated </i></p>
+		<P> <i> based on geodata from photos </i> </P>
+		<P> <i> and recoded location on map.</i> </P>
+	</div>
+</body>
+
+</html>
